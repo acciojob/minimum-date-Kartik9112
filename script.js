@@ -1,25 +1,38 @@
-function minDate(dates) {
-  // Return the minimum date string from the array
-  return dates.slice().sort()[0];
-}
+const progress = document.getElementById('progress');
+const prevBtn = document.getElementById('prev');
+const nextBtn = document.getElementById('next');
+const circles = document.querySelectorAll('.circle');
 
-function handleMinDate() {
-  const input = document.getElementById("dateInput").value.trim();
+let currentStep = 1;
 
-  if (!input) {
-    document.getElementById("result").textContent = "Please enter some dates.";
-    return;
+nextBtn.addEventListener('click', () => {
+  currentStep++;
+  if (currentStep > circles.length) {
+    currentStep = circles.length;
   }
+  updateProgress();
+});
 
-  // Split input by commas, trim whitespace, and validate format
-  const dates = input.split(",").map(date => date.trim());
-  const isValidFormat = dates.every(date => /^\d{4}\/\d{2}\/\d{2}$/.test(date));
-
-  if (!isValidFormat) {
-    document.getElementById("result").textContent = "Please use the correct format: YYYY/MM/DD.";
-    return;
+prevBtn.addEventListener('click', () => {
+  currentStep--;
+  if (currentStep < 1) {
+    currentStep = 1;
   }
+  updateProgress();
+});
 
-  const earliest = minDate(dates);
-  document.getElementById("result").textContent = `Earliest Date: ${earliest}`;
+function updateProgress() {
+  circles.forEach((circle, index) => {
+    if (index < currentStep) {
+      circle.classList.add('active');
+    } else {
+      circle.classList.remove('active');
+    }
+  });
+
+  const progressPercent = ((currentStep - 1) / (circles.length - 1)) * 100;
+  progress.style.width = progressPercent + '%';
+
+  prevBtn.disabled = currentStep === 1;
+  nextBtn.disabled = currentStep === circles.length;
 }
