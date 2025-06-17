@@ -1,16 +1,23 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Minimum Date Finder</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+  <div class="container">
+    <h1>📅 Find the Minimum Date</h1>
+    <p>Enter dates in YYYY/MM/DD format, separated by commas:</p>
+    
+    <textarea id="dateInput" rows="4" placeholder="e.g. 2023/01/01, 2022/12/31, 2023/02/15"></textarea>
+    
+    <button onclick="handleMinDate()">Get Minimum Date</button>
+    
+    <div id="result"></div>
+  </div>
 
+  <script src="script.js"></script>
 </body>
-
 </html>

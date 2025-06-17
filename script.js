@@ -1,40 +1,25 @@
 function minDate(dates) {
-  //write you code here
+  // Return the minimum date string from the array
+  return dates.slice().sort()[0];
 }
 
-// Do not change the code
+function handleMinDate() {
+  const input = document.getElementById("dateInput").value.trim();
 
-var dates = [
-  "2023/03/01",
-  "2023/03/02",
-  "2023/03/03",
-  "2023/03/04",
-  "2023/03/05",
-  "2023/03/06",
-  "2023/03/07",
-  "2023/03/08",
-  "2023/03/09",
-  "2023/03/10",
-  "2023/03/11",
-  "2023/03/12",
-  "2023/03/13",
-  "2023/03/14",
-  "2023/03/15",
-  "2023/03/16",
-  "2023/03/17",
-  "2023/03/18",
-  "2023/03/19",
-  "2023/03/20",
-  "2023/03/21",
-  "2023/03/22",
-  "2023/03/23",
-  "2023/03/24",
-  "2023/03/25",
-  "2023/03/26",
-  "2023/03/27",
-  "2023/03/28",
-  "2023/03/29",
-  "2023/03/30",
-];
+  if (!input) {
+    document.getElementById("result").textContent = "Please enter some dates.";
+    return;
+  }
 
-alert(minDate(dates));
+  // Split input by commas, trim whitespace, and validate format
+  const dates = input.split(",").map(date => date.trim());
+  const isValidFormat = dates.every(date => /^\d{4}\/\d{2}\/\d{2}$/.test(date));
+
+  if (!isValidFormat) {
+    document.getElementById("result").textContent = "Please use the correct format: YYYY/MM/DD.";
+    return;
+  }
+
+  const earliest = minDate(dates);
+  document.getElementById("result").textContent = `Earliest Date: ${earliest}`;
+}

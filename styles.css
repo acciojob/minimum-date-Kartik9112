@@ -1,1 +1,52 @@
 /*  your css code here. If applicable */
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(to right, #667eea, #764ba2);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  background: white;
+  color: #333;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  width: 90%;
+  max-width: 500px;
+}
+
+textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  font-size: 1rem;
+  background-color: #5a67d8;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #434190;
+}
+
+#result {
+  margin-top: 20px;
+  font-weight: bold;
+  font-size: 1.1rem;
+}
